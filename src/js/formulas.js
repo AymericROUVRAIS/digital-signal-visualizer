@@ -347,6 +347,9 @@ function selectMethod(method, c, BINARY, HEIGHT) {
     case "MAN":
       MAN(c, BINARY, HEIGHT);
       break;
+    case "Miller":
+      Miller(c, BINARY, HEIGHT);
+      break;
     case "B8ZS":
       B8ZS(c, BINARY, HEIGHT);
       break;
