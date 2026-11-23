@@ -249,7 +249,36 @@ function B8ZS(c, BINARY, HEIGHT) {
   c.stroke();
   c.closePath();
 }
+function Miller(c, BINARY, HEIGHT) {
+  c.beginPath();
+  c.lineWidth = 2.5;
+  c.setLineDash([0, 0]);
+  c.strokeStyle = "red";
 
+  let level = -50; // start high
+  let prev = null;
+  c.moveTo(50, HEIGHT / 2 + level);
+
+  for (let i = 50, j = 0; j < BINARY.length; i += 50, j++) {
+    const bit = BINARY.charAt(j);
+    if (bit == 1) {
+      c.lineTo(i + 25, HEIGHT / 2 + level);
+      level *= -1; // mid-bit transition
+      c.lineTo(i + 25, HEIGHT / 2 + level);
+      c.lineTo(i + 50, HEIGHT / 2 + level);
+    } else {
+      if (prev === "0") {
+        c.lineTo(i, HEIGHT / 2 + level);
+        level *= -1; // transition at start of bit
+        c.lineTo(i, HEIGHT / 2 + level);
+      }
+      c.lineTo(i + 50, HEIGHT / 2 + level);
+    }
+    prev = bit;
+  }
+  c.stroke();
+  c.closePath();
+}
 function HDB3(c, BINARY, HEIGHT) {
   // counts the number of zero and ones then apply the HDB3 formula
   let inverse = true;
