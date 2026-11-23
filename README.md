@@ -4,7 +4,7 @@
 ## About
 
 This web app helps to visualize how the digital signals are encoded in Data communication.
-It includes the following encode methods ,
+It includes the following encode methods
 
 1. Unipolar NRZ(Non Return to Zero )
 2. NRZ - L
@@ -16,7 +16,10 @@ It includes the following encode methods ,
 8. Differential Manchester encoding
 9. Bipolar with Eight Zero Substitution (B8ZS)
 10. High Density Bipolar Order 3 Encoding (HDB3)
+11. Miller encoding
 
+Compared to the [initial repo](https://github.com/nur-zaman/digital-signal-visualizer), Manchester is inversed,
+and Miller was added.
 
 
 ## For Devs
