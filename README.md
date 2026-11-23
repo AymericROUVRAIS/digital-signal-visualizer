@@ -24,9 +24,9 @@ and Miller was added.
 
 ## For Devs
 
-1.  Clone the repo:
+1.  Clone the repo
 
-        git clone https://github.com/nur-zaman/digital-signal-visualizer.git
+        git clone https://github.com/AymericROUVRAIS/digital-signal-visualizer
 
 2.  Install dependencies:
 
