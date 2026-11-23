@@ -149,33 +149,22 @@ function MLT3(c, BINARY, HEIGHT) {
   c.stroke();
   c.closePath();
 }
-
 function MAN(c, BINARY, HEIGHT) {
-  let currentlvl = HEIGHT / 2;
   c.beginPath();
   c.lineWidth = 2.5;
   c.setLineDash([0, 0]);
   c.strokeStyle = "red";
-  if (BINARY.charAt(0) == 1) currentlvl = +50;
-  else currentlvl = -50;
-  c.moveTo(50, HEIGHT / 2 + currentlvl);
+
+  // 1 -> starts high (-50), 0 -> starts low (+50)
+  let level = BINARY.charAt(0) == 1 ? -50 : 50;
+  c.moveTo(50, HEIGHT / 2 + level);
 
   for (let i = 50, j = 0; j < BINARY.length; i += 50, j++) {
-    if (BINARY.charAt(j) == 1) {
-      currentlvl = 50;
-      c.lineTo(i, HEIGHT / 2 + currentlvl);
-      c.lineTo(i + 25, HEIGHT / 2 + currentlvl);
-      currentlvl = currentlvl * -1;
-      c.lineTo(i + 25, HEIGHT / 2 + currentlvl);
-      c.lineTo(i + 50, HEIGHT / 2 + currentlvl);
-    } else {
-      currentlvl = -50;
-      c.lineTo(i, HEIGHT / 2 + currentlvl);
-      c.lineTo(i + 25, HEIGHT / 2 + currentlvl);
-      currentlvl = currentlvl * -1;
-      c.lineTo(i + 25, HEIGHT / 2 + currentlvl);
-      c.lineTo(i + 50, HEIGHT / 2 + currentlvl);
-    }
+    level = BINARY.charAt(j) == 1 ? -50 : 50;
+    c.lineTo(i, HEIGHT / 2 + level);
+    c.lineTo(i + 25, HEIGHT / 2 + level);
+    c.lineTo(i + 25, HEIGHT / 2 - level); // mid-bit transition
+    c.lineTo(i + 50, HEIGHT / 2 - level);
   }
   c.stroke();
   c.closePath();
